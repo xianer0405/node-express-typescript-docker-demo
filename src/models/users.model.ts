@@ -31,6 +31,11 @@ export default function (sequelize: Sequelize): typeof UserModel {
     },
     {
       tableName: 'users',
+      modelName: 'user',
+      name: {
+        singular: 'user',
+        plural: 'users'
+      },
       sequelize,
     },
   );
