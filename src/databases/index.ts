@@ -8,7 +8,7 @@ const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
   dialect: 'mysql',
   host: DB_HOST,
   port: Number(DB_PORT),
-  timezone: '+09:00',
+  timezone: '+08:00',
   define: {
     charset: 'utf8mb4',
     collate: 'utf8mb4_general_ci',
@@ -26,7 +26,9 @@ const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
   benchmark: true,
 });
 
-sequelize.authenticate();
+sequelize.authenticate().then(() => {
+    logger.info('mysql test connection is ok')
+});
 
 const DB = {
   Users: UserModel(sequelize),

@@ -31,15 +31,19 @@ services:
       - mysql
   mysql:
     image: mysql:5.7
-    container_name: mysql
+    container_name: mysqldb
     environment:
       MYSQL_ROOT_USER: root
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+      # MYSQL_DATABASE: sequelize_demo
     ports:
-      - '3306:3306'
+      - '3307:3306'
     networks:
       - backend
+    volumes:
+      - /Users/jackie/docker-temp/mysql/conf:/etc/conf
+      - /Users/jackie/docker-temp/mysql/data:/var/lib/mysql
+      - /Users/jackie/docker-temp/mysql/log:/var/log/mysql
 
 networks:
   backend:
